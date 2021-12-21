@@ -8,7 +8,11 @@ import com.task.service.model.HotelGroup;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -74,7 +78,5 @@ public class RequestManager {
         return objectMapper.readValue(responseEntity.getBody().get(0).path("provinces").toPrettyString(),
                 new TypeReference<>() {
                 });
-
     }
-
 }

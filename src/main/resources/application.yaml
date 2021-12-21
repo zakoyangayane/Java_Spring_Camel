@@ -9,9 +9,14 @@ rapid:
 
 ftp:
   server:
-    info: sftp://localhost:21/../home/temp/data?username=user&password=user&delay=5s&move=done&readLock=rename
-  local:
-    dir: file:C:/ftp/test
+    protocol: ftp
+    username: user
+    password: user
+    host: localhost
+    port: 21
+    remote-directory: remoteDirectory
+    passive-mode: true
+
 camel:
   springboot:
     main-run-controller: true

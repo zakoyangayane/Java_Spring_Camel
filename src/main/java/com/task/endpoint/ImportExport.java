@@ -4,6 +4,7 @@ import com.task.service.csv.ImportExportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,18 +16,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/csv")
 public class ImportExport {
 
-    private ImportExportService importExportService;
+    private final ImportExportService importExportService;
 
-    File file = new File("data.csv");
+    File file = new File("csv/data.csv");
     FileInputStream input;
     MultipartFile multipartFile;
 
@@ -40,17 +38,14 @@ public class ImportExport {
         }
     }
 
+    @Scheduled(initialDelay = 15000, fixedRate = 45000)
     public void execute() {
-        ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
-        ses.scheduleAtFixedRate(() -> {
-            try {
-                importExportService.importCsv(multipartFile);
-            } catch (TransformerException e) {
-                e.printStackTrace();
-            }
-        }, 0, 1, TimeUnit.SECONDS);
+        try {
+            importExportService.importCsv(multipartFile);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
-
 
     @PostMapping("/import")
     public ResponseEntity<?> importCsv(@RequestParam("file") MultipartFile file) throws TransformerException {

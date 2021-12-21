@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<combine_xml country="Armenia" city="Yerevan">
+    <hotels>
+        <hotel geo_id="1178" destination_id="18689" type="CITY" redirect_page="DEFAULT_PAGE" latitude="40.16609467197001" longitude="44.524091549620216" caption="&lt;span class='highlighted'&gt;Yerevan&lt;/span&gt;, Armenia" name="Yerevan"/>
+        <hotel geo_id="553248622006369547" destination_id="10458988" type="NEIGHBORHOOD" redirect_page="DEFAULT_PAGE" latitude="40.17823582323463" longitude="44.50587405950742" caption="Kentron, &lt;span class='highlighted'&gt;Yerevan&lt;/span&gt;, Armenia" name="Kentron"/>
+        <hotel geo_id="553248635975438220" destination_id="12484571" type="NEIGHBORHOOD" redirect_page="DEFAULT_PAGE" latitude="40.13497165820596" longitude="44.54319660620178" caption="Erebuni, &lt;span class='highlighted'&gt;Yerevan&lt;/span&gt;, Armenia" name="Erebuni"/>
+    </hotels>
+    <covid_results province="Armenia" confirmed="6302" recovered="2936" deaths="77" active="3289"/>
+</combine_xml>

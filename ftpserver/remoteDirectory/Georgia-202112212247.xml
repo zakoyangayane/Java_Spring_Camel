@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<combine_xml country="Georgia" city="Tbilisi">
+    <hotels>
+        <hotel geo_id="3381" destination_id="1635833" type="CITY" redirect_page="DEFAULT_PAGE" latitude="41.71791" longitude="44.777998" caption="&lt;span class='highlighted'&gt;Tbilisi&lt;/span&gt;, Georgia" name="Tbilisi"/>
+        <hotel geo_id="553248633981743832" destination_id="10874222" type="NEIGHBORHOOD" redirect_page="DEFAULT_PAGE" latitude="41.69454963651678" longitude="44.78923267468876" caption="Old &lt;span class='highlighted'&gt;Tbilisi&lt;/span&gt;, Tbilisi, Georgia" name="Old Tbilisi"/>
+        <hotel geo_id="553248633981743844" destination_id="10874224" type="NEIGHBORHOOD" redirect_page="DEFAULT_PAGE" latitude="41.69085412881218" longitude="44.796146916335566" caption="Sololaki, &lt;span class='highlighted'&gt;Tbilisi&lt;/span&gt;, Georgia" name="Sololaki"/>
+    </hotels>
+    <covid_results province="Georgia"/>
+</combine_xml>

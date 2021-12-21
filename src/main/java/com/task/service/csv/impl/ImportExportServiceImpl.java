@@ -20,15 +20,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ImportExportServiceImpl implements ImportExportService {
 
-    private final ReadAndWriteService<Address> readAndWriteService;
-
     private final RequestManager requestManager;
+    private final ReadAndWriteService<Address> readAndWriteService;
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 
     @Override
     public ResponseEntity<?> importCsv(final MultipartFile multipartFile) {
@@ -42,6 +44,7 @@ public class ImportExportServiceImpl implements ImportExportService {
                 final HotelGroup testHotel = requestManager.makeGetHotelRequest(address.getCity()).stream()
                         .filter(h -> h.getEntities().size() > 2).findFirst().orElse(null);
 
+                Thread.sleep(1000);
                 final CovidResponse testCovid =
                         requestManager.makeGetCovidStatsRequest(address.getCountry(), address.getDate()).stream()
                                 .filter(t -> t.getProvince().equals(country)).findFirst().orElse(null);
@@ -54,7 +57,7 @@ public class ImportExportServiceImpl implements ImportExportService {
                     combineXml.setHotels(testHotel.getEntities());
                 }
 
-                File file = new File(country + ".xml");
+                File file = new File("xml/" + country + "-" + LocalDateTime.now().format(DATE_FORMAT) + ".xml");
                 JAXBContext jaxbContext = JAXBContext.newInstance(combineXml.getClass());
                 Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -63,13 +66,10 @@ public class ImportExportServiceImpl implements ImportExportService {
                 jaxbMarshaller.marshal(combineXml, file);
 
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("File is wrong");
         }
         return ResponseEntity.status(HttpStatus.OK).body(null);
-
     }
-
 }
