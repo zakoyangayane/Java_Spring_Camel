@@ -1,0 +1,17 @@
+server:
+  port: 8070
+
+rapid:
+  api:
+    host_hotel: hotels4.p.rapidapi.com
+    host_covid: covid-19-data.p.rapidapi.com
+    key: 77d2ce92ecmshd2205d0a1a8a70cp1ddf14jsnb92ce02c4392
+
+ftp:
+  server:
+    info: sftp://localhost:21/../home/temp/data?username=user&password=user&delay=5s&move=done&readLock=rename
+  local:
+    dir: file:C:/ftp/test
+camel:
+  springboot:
+    main-run-controller: true

@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  ftp:
+    container_name: "ftp-server"
+    restart: always
+    image: bogem/ftp
+    environment:
+      - FTP_USER=user
+      - FTP_PASS=user
+      - PASV_ADDRESS=127.0.0.1
+    ports:
+      - "20:20"
+      - "21:21"
+      - "47400-47470:47400-47470"
+    volumes:
+      - ./ftpserver:/home/vsftpd/ # link local folder to folder in container (ftp server)
